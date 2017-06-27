@@ -1,4 +1,4 @@
-# FORTH-TRACE library
+# Online Feature Selection library
 
 # Table of contents
 1. [Introduction](#introduction)
