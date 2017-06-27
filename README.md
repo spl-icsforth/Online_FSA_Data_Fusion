@@ -3,7 +3,7 @@
 # Table of contents
 1. [Introduction](#introduction)
 2. [Modules Description](#modules)
-3. [Modules Description](#fusion)
+3. [Data Fusion](#fusion)
 4. [Datasets](#datasets)
 5. [Useful methods](#useful)
 6. [Installation Instructions](#execution)
