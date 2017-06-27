@@ -3,10 +3,11 @@
 # Table of contents
 1. [Introduction](#introduction)
 2. [Modules Description](#modules)
-3. [Datasets](#datasets)
-4. [Useful methods](#useful)
-5. [Installation Instructions](#execution)
-6. [Licence](#licence)
+3. [Modules Description](#fusion)
+4. [Datasets](#datasets)
+5. [Useful methods](#useful)
+6. [Installation Instructions](#execution)
+7. [Licence](#licence)
 
 ## Introduction <a name="introduction"></a>
 Online_FSA_Data_Fusion, is an Android extension of FORTH-TRACE library, a Java implemented software tool that covers the entire feature-level fusion chain applied in Human Activity Recognition (HAR) applications.
@@ -22,7 +23,7 @@ The Machine Learning pipeline consists of the following modules.
 *  **Feature Selection**
 
 ## Modules Description <a name="modules"></a>
-* **Acquisition:** Collect data from wearable sensors and convert them into the appropriate data structures. This module supports multiple types of HAR datasets.
+* **Acquisition:** Collect data from wearable sensors and convert them into the appropriate data structures. This module supports multiple types of HAR datasets. Dynamic Acquisition is supported by acquiring batches of data instead of the whole dataset.
 * **Segmentation:** Split data into sliding windows of observations. The key parameters of the Segmentation component is the size _w_ pf the sliding windows, as well as the overlapping factor _a_.
 * **Feature Extraction:** Extract _M_ features for each data segment of each sensor modality. Currently, we support 11 types of statistical features and the Pairwise Correlation among sensor channels, listed below. 
     *  Mean
@@ -48,11 +49,15 @@ _R (R <<M)_ representative features for each segment. Currently 4 types of FSA a
 For the Data Fusion we implement two approaches, both consisting of two stages.
 The first stage of both approaches includes the parallel execution of the machine learning pipeline for multiple sensor locations, using parallel threads.
 Then we consider
-* a Classification Scheme: the features from multiple sensor locations are fused into a concatenated matrix, and are given as input to the kNN classifier,
-* a Feature Selection Architecture: the features from multiple sensor locations are fused into a concatenated matrix, and the inter-location Pairwise Correlation features are extracted based on the dominant sensor channels that occur from the features, before proceeding into a second stage of Feature Selection.
+* a Classification Scheme
+    * the features from multiple sensor locations are fused into a concatenated matrix, and are given as input to the kNN classifier,
+* a Feature Selection Architecture
+    * the features from multiple sensor locations are fused into a concatenated matrix
+    * the inter-location Pairwise Correlation features are extracted based on the dominant sensor channels that occur from the features
+    * a second stage of Feature Selection is applied.
 
 ## Datasets <a name="datasets"></a>
-The FORTH-TRACE library is designed to support any given HAR dataset.
+The library is designed to support any given HAR dataset.
 Our implementation is testedon the FORTH-TRACE dataset.
 * FORTH-TRACE dataset -- multiple locations - multiple modalities (Available at https://github.com/spl-icsforth/FORTH_TRACE_DATASET)
 
